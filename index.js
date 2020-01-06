@@ -6,7 +6,7 @@ export default class AnimatedPolyline extends Component {
     super(props);
     this.state = {
       completed: 0,
-      coords: []
+      coords: [],
     };
   }
   componentDidMount() {
@@ -28,7 +28,8 @@ export default class AnimatedPolyline extends Component {
     const len = allCoords.length;
     let completed = 0;
     this.state.coords = [];
-    const steps = parseInt((allCoords.length / 20), 10);
+    const stepCount = this.props.steps || 20;
+    const steps = parseInt((allCoords.length / stepCount), 10);
     clearInterval(this.interval);
     this.interval = setInterval(() => {
       const coords = this.state.coords.slice(0);
